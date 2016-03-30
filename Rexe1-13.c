@@ -44,7 +44,7 @@ int main()
 			temp=ndigit[i];
 		}
 	}		
-	printf("%d",temp);
+	printf("Maximum number, i.e. maximum occurce of a number%d",temp); // will be used to set the vertical for loop in vertical historgam
 
 	printf("\n------------------\n");
 	
@@ -66,9 +66,9 @@ int main()
 	
 	printf("\n");
 
-
-
 	
+	
+	//Algorithm for vertical histogram 
 	for(j=0;j<temp;j++)
 	{
 
