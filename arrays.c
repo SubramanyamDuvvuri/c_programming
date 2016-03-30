@@ -17,11 +17,11 @@ int main()
 	while((c=getchar())!= EOF)
 	{
 		if(c >='0' ||c<='9')
-			++ndigit[c-'0'];
+			++ndigit[c-'0'];   // the array is formed using hte position of the number
 		
 	}
 	
-	for ( i=0; i <MAX;i++)
+	for ( i=0; i <MAX;i++)		// Algorithm to make horizontal histogram
 	{
 		printf("%d-->%d",i,ndigit[i]);
 		for(j=0;j<ndigit[i];j++)
