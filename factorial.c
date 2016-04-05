@@ -1,8 +1,7 @@
 /*Factorial of a number*/
 #include<stdio.h>
 
-int fact ( int )
-
+int fact ( int );
 
 int main ()
 {
@@ -12,7 +11,7 @@ int main ()
 	for(i=number; i>=1;i--)
 	{
 			f=f*i;
-			printf("%d",f);
+		//	printf("%d",f);
 	}
 	printf("Factorial of %d is %d\n", number, f);
 	return 0;
