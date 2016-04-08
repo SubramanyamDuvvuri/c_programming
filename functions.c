@@ -29,6 +29,7 @@ int power ( int number, int pow )// both paramters are integers with integer ret
 	if ( power ==0)
 		temp =1;        //return 1 if the power is 0		
 	return temp;
+	printf("------------");
 }
 
  
