@@ -1,3 +1,4 @@
+/*Converting the inteer to a digit in reverserse order*/
 #include<stdio.h>
 #define MAX 100
 int main ()
@@ -23,7 +24,7 @@ int main ()
 			break;
 		}
 	}
-	printf("\n%d\n",count);	
+//	printf("\n%d\n",count);	
 	for (i=0;i<count;i++)
 		printf("%d\n",digit[i]);
 	
