@@ -1,5 +1,5 @@
+/*The code demonstrates a two dimensional array operation*/
 #include<stdio.h>
-
 void matrix_send(int (*q)[3]);
 int main()
 {

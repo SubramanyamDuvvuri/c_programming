@@ -43,7 +43,7 @@ int main ()
 void qusort(cricketer *p[], int num)
 {
 	int i,j ;
-	cricketer* temp=(cricketer*)malloc(sizeof(cricketer));
+	cricketer* temp=(cricketer*)malloc(sizeof(cricketer));		// acts as a temporary variable 
 
 	for(i=0 ; i<num ;i++)
 	{
@@ -51,8 +51,9 @@ void qusort(cricketer *p[], int num)
 		{
 			if (p[j]->average>p[i]->average) 	
 			{
-				
-				memcpy(&temp,&p[j],sizeof(p[j]));	
+							//sorting using swapping
+				memcpy(&temp,&p[j],sizeof(p[j])); //memcpy has to be used to copy one structure pointer to another
+									//"&" has to be used 
 //				printf("--%f----",temp->average);				
 				memcpy(&p[j],&p[i],sizeof(p[i]));
 				memcpy(&p[i],&temp,sizeof(temp));	
