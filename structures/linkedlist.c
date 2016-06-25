@@ -28,34 +28,34 @@ typedef struct list
 list* create (list*);
 void display(list*);
 list* createOne (list*);
+list* insertBegin(list*);
+list* deleteNode(list*);
 int main()
 {
-	list* start;
+	list* start;					//structure pointer
 	start=NULL;
 	int option;
 	int info;
 	while(1)
 	{
-		printf("Choose an option \n");
-		printf("1.Create a node\n2.Display the list \n3.Insert a node in the middle\n4.Insert a node in the end\n");
+		printf("\nChoose an option \n");
+		printf("1.Create a node at the end\n2.Display the list \n3.Insert a node at a position\n4.delete a node at a position\n");
 		scanf("%d",&option);
 		
 		switch(option)
 		{
-			case 1: 
-				start=create (start);
-				//printf("in main--case1-->%d",start);
-				break;
 			case 2:
-				//printf("in main--case2-->%d",start);
-				printf("-----3-------%d",start);
-
 				display(start);
 				break;
-			case 3:	printf("----5--------%d",start);
-
+			case 1:
 				start=createOne(start);
 				break;
+			case 3:	
+				insertBegin(start);
+				break;	
+			case 4:deleteNode(start);
+				break;
+				
 			default:printf("Invalid number-----Try Again \n");
 				
 		}
@@ -65,6 +65,7 @@ int main()
 	return 0;
 
 }
+/*
 list* create (list* start)
 {
 	int info,i;
@@ -106,14 +107,13 @@ list* create (list* start)
 	}
 	return start ;
 } 
+*/
 
-
-void display(list * start)
+void display(list * start)				//TO display all the nodes
 {
  	list* ptr;
 	ptr=start;
 	//printf("******IN DISPLAY****%d---- %d",ptr,start );
-		printf("-----4444--------%d",start);
 	
 	if(start==NULL)
 	{
@@ -123,7 +123,7 @@ void display(list * start)
 		
 	while(ptr!=NULL)
 	{
-		printf("%d,",ptr->info);
+		printf("%d-->",ptr->info);
 		
 		ptr=ptr->link;
 	}
@@ -145,24 +145,80 @@ list* createOne(list* start)
 		temp->link=NULL;
 		start=temp;
 		
-		printf("-------1------%d",start);
 		return start;
 	}
 
-	while(ptr!=NULL)
+	while(ptr->link!=NULL)
 	{
 		ptr=ptr->link;
 
 	}
 	
-	temp=(list*)malloc(sizeof(list));
+	temp=(list*)malloc(sizeof(list));  		//Each time memory has to be allocated
 	printf("Enter info\n");
 	scanf("%d",&info);
 	temp->info=info;
 	temp->link=NULL;
-	ptr->link=temp;
-	printf("------2------%d",start);
-
-	
+	ptr->link=temp;					//putting the node into the list
+	return start;
 }
+
+
+list* insertBegin(list * start)
+{
+	list* ptr,*temp;
+	int pos,info;
+ptr=start;
+	if(start==NULL)
+	{
+		printf("List is empty,Choose option 1 for general insertion\n");
+		return start;
+	}
+	printf("Insert the position \n ");
+	scanf("%d",&pos);
 	
+	while(pos!=0)
+	{
+		ptr=ptr->link;
+		pos--;	
+	}
+
+	temp = (list*)malloc(sizeof(list));
+	printf("Enter info");
+	scanf("%d",&info);
+	temp->info=info;
+	temp->link=ptr->link;
+	ptr->link=temp;
+	return start;
+}
+
+list* deleteNode(list* start)
+{
+	
+	list*ptr,*ptr1;
+	int pos;
+	printf("Enter the position at which node has to be deleted\n");
+	scanf("%d",&pos);
+	ptr=start;
+	if(start==NULL)
+	{
+		printf("List is empty\n");
+		return start;
+	}
+	
+	while(pos-1!=0)
+	{
+		ptr=ptr->link;
+		pos--;	
+	}
+
+	ptr1=ptr;
+	ptr=ptr->link;
+	ptr1->link=ptr->link;
+	free(ptr);
+	return start;
+}
+
+
+
+
