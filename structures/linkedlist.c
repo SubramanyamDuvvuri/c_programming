@@ -25,30 +25,37 @@ typedef struct list
 }list;
 
 
-void create ( list* , int);
-
-
+list* create (list*);
+void display(list*);
+list* createOne (list*);
 int main()
 {
-	list* START;
-	START=NULL;
+	list* start;
+	start=NULL;
 	int option;
 	int info;
-	int num
-
 	while(1)
 	{
 		printf("Choose an option \n");
-		printf("1.Create a node\n2.Insert a nodeint the beginning \n3.Insert a node in the middle\n4.Insert a node in the end\n");
+		printf("1.Create a node\n2.Display the list \n3.Insert a node in the middle\n4.Insert a node in the end\n");
 		scanf("%d",&option);
 		
 		switch(option)
 		{
-			case 1: printf("Enter the number of nodes to be created\n");
-				scanf("%d",&num);
-				create (START,info);
+			case 1: 
+				start=create (start);
+				//printf("in main--case1-->%d",start);
 				break;
+			case 2:
+				//printf("in main--case2-->%d",start);
+				printf("-----3-------%d",start);
 
+				display(start);
+				break;
+			case 3:	printf("----5--------%d",start);
+
+				start=createOne(start);
+				break;
 			default:printf("Invalid number-----Try Again \n");
 				
 		}
@@ -58,32 +65,104 @@ int main()
 	return 0;
 
 }
-
-
-
-void create ( list * START, int num)
+list* create (list* start)
 {
-	int info;
+	int info,i;
+	int nodes;
 	list*ptr;
 	ptr=start;
 	list*temp=(list*)malloc(sizeof(list));
-	for(i=0;i<num;i++)
+	printf("Enter the number of nodes to be inserted\n");
+	scanf("%d",&nodes);
+	for(i=0;i<nodes;i++)
 	{
-		if (ptr->link==NULL)
-			{
-				printf("Enter the info\n")
-				scanf("%d",&info);
-				temp->info=info;
-				temp->link=NULL;
-				ptr=temp;
-			}
-			else
-				ptr=ptr->link;
+		if (start==NULL)
+		{
+			//printf("------>%d",start);
+			printf("Enter the info\n");
+			scanf("%d",&info);
+			temp->info=info;
+			temp->link=NULL;
+			start=temp;
+		
+			//printf("--------->%d",start);
+
 		}
+
+		else
+		{
+			while(ptr!=NULL)
+			{	
+				ptr=ptr->link;
+			}
+				printf("Enter the info...\n");
+				scanf("%d",&info);
+				list*temp=(list*)malloc(sizeof(list));
+				temp->info=info;
+				ptr=temp;
+			
+		}
+
+	}
+	return start ;
 } 
 
 
-
-
+void display(list * start)
+{
+ 	list* ptr;
+	ptr=start;
+	//printf("******IN DISPLAY****%d---- %d",ptr,start );
+		printf("-----4444--------%d",start);
+	
+	if(start==NULL)
+	{
+		printf("List is empty\n");
+		return;
+	}
 		
+	while(ptr!=NULL)
+	{
+		printf("%d,",ptr->info);
 		
+		ptr=ptr->link;
+	}
+	
+}
+
+list* createOne(list* start)
+{
+	list* temp;
+	list *ptr;
+	int info;
+	ptr=start;
+	if(start==NULL)
+	{
+		temp=(list*)malloc(sizeof(list));
+		printf("Enter info\n");
+		scanf("%d",&info);
+		temp->info=info;
+		temp->link=NULL;
+		start=temp;
+		
+		printf("-------1------%d",start);
+		return start;
+	}
+
+	while(ptr!=NULL)
+	{
+		ptr=ptr->link;
+
+	}
+	
+	temp=(list*)malloc(sizeof(list));
+	printf("Enter info\n");
+	scanf("%d",&info);
+	temp->info=info;
+	temp->link=NULL;
+	ptr->link=temp;
+	printf("------2------%d",start);
+
+	
+}
+	
